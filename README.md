@@ -63,3 +63,22 @@ import { Component } from "@angular/core";
 })
 export class MainLayoutComponent {}
 ```
+
+## 3. Config Alias Path
+
+Add path to `tsconfig.json` file in root directory:
+
+```json
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    // ... other properties
+    "paths": {
+      // Do this
+      "@components/*": ["./projects/landingpage/src/app/components/*"],
+      "@pages/*": ["./projects/landingpage/src/app/pages/*"],
+      "@root/*": ["./*"]
+    }
+  }
+}
+```

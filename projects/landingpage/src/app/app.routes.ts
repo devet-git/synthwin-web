@@ -7,10 +7,18 @@ export const routes: Routes = [
   {
     path: '',
     title: 'Synthwin',
+    providers: [],
+
     component: MainLayoutComponent,
     children: [
       { path: '', component: HomePageComponent },
-      { path: 'apps', component: AppsPageComponent },
+      {
+        path: 'apps',
+        loadComponent: () =>
+          import('./pages/apps-page/apps-page.component').then(
+            (c) => c.AppsPageComponent
+          ),
+      },
     ],
   },
 ];

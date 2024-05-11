@@ -1,0 +1,26 @@
+<div
+  (click)="data.onClick && data.onClick()"
+  class="bg-primary-1 border shadow-md hover:border-primary-2 p-main rounded-md cursor-pointer relative"
+>
+  <ng-container *ngIf="data.url">
+    <a
+      *ngIf="isAbsoluteUrl"
+      [href]="data.url"
+      target="_blank"
+      class="absolute top-0 left-0 w-full h-full bg-transparent z-10"
+    ></a>
+    <a
+      *ngIf="!isAbsoluteUrl"
+      [routerLink]="data.url"
+      class="absolute top-0 left-0 w-full h-full bg-transparent z-10"
+    ></a>
+  </ng-container>
+  <img
+    *ngIf="data.image"
+    [src]="data.image"
+    [alt]="data.description"
+    class="w-10"
+  />
+  <h2 class="text-primary-5 mt-2">{{ data.name }}</h2>
+  <p class="text-sm capitalize text-gray-400">{{ data.description }}</p>
+</div>

@@ -1,1 +1,5 @@
-<p>apps-page works!</p>
+<div class="flex gap-2 flex-wrap">
+  <ng-container *ngFor="let app of apps">
+    <app-card [data]="app" />
+  </ng-container>
+</div>
