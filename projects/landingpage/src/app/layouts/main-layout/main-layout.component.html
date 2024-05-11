@@ -1,0 +1,24 @@
+<header
+  class="flex justify-between bg-primary-1 items-center px-main py-2 backdrop-blur-sm"
+>
+  <section>
+    <a routerLink="/" class="text-primary-5 font-bold text-lg">Synthwin</a>
+  </section>
+
+  <section class="flex">
+    <a routerLink="/apps">Apps</a>
+  </section>
+
+  <section>
+    <p-button
+      label="Create an account"
+      size="small"
+      styleClass="rounded-none outline-none bg-primary-2 border-primary-2"
+      routerLink="/"
+    />
+  </section>
+</header>
+
+<main class="p-main">
+  <router-outlet></router-outlet>
+</main>

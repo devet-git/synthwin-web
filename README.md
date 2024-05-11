@@ -1,27 +1,65 @@
-# SynthwinWeb
+# Synthwin Web Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+## 1. Add new application
 
-## Development server
+```bat
+ng generate application <app-name>
+//or
+ng g a <app-name>
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1.1. Config new app
 
-## Code scaffolding
+Add this code to `projects/<app-name>/src/style.scss` file (with PrimeNG):
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```css
+@layer tailwind-base, primeng, tailwind-utilities;
 
-## Build
+@layer tailwind-base {
+  @tailwind base;
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+```
 
-## Running unit tests
+**Note:** If don't use PrimeNG in project, just add like this:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
-## Running end-to-end tests
+### 1.2. Run application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run the command in terminal like this:
 
-## Further help
+```bat
+ng server <app-name>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 2. Custom PrimeNG component with TailwindCSS classes
+
+Using `styleClass` property, like:
+
+```html
+<p-button label="Create an account" size="small" styleClass="rounded-none outline-none bg-primary-2 border-primary-2" routerLink="/" />
+```
+
+Before that, remember to import the component's module to `.component.ts` file, example:
+
+```ts
+import { ButtonModule } from "primeng/button";
+import { Component } from "@angular/core";
+@Component({
+  selector: "app-main-layout",
+  standalone: true,
+  imports: [ButtonModule], //Import like this
+  templateUrl: "./main-layout.component.html",
+  styleUrl: "./main-layout.component.scss",
+})
+export class MainLayoutComponent {}
+```
